@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Grammar: A Day at the Park</title>
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #1D4ED8;
+            --past-simple: #3B82F6;
+            --past-cont: #10B981;
+            --bg: #F8FAFC;
+            --card: #FFFFFF;
+            --text: #1E293B;
+            --border: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        header p {
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+
+        section h2 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            color: #0F172A;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .passage-box {
+            background-color: #F1F5F9;
+            border-radius: 12px;
+            padding: 20px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            border: 1px solid var(--border);
+        }
+
+        .hl-simple {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid #3B82F6;
+        }
+
+        .hl-cont {
+            background-color: #D1FAE5;
+            color: #065F46;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid #10B981;
+        }
+
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .grammar-table th, .grammar-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .grammar-table th {
+            background-color: #F8FAFC;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        .grammar-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag-simple {
+            display: inline-block;
+            background: #DBEAFE;
+            color: #1E40AF;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .tag-cont {
+            display: inline-block;
+            background: #D1FAE5;
+            color: #065F46;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .practice-box {
+            background-color: #FAF5FF;
+            border: 1px solid #E9D5FF;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 10px 14px;
+            margin-top: 8px;
+            border: 1px solid #CBD5E0;
+            border-radius: 8px;
+            background: white;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .quiz-option:hover {
+            background-color: #F3E8FF;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .info-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1E293B;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Reading Grammar</h1>
+        <p>A Day at the Park</p>
+    </header>
+
+    <!-- 1. Read the passage -->
+    <section>
+        <h2>1. Read the passage</h2>
+        <div class="passage-box">
+            Last Sunday, Mina 
+            <span class="hl-simple" onclick="showInfo('went: 단순과거 (go의 과거형)')">went</span> 
+            to the park with her family. The weather 
+            <span class="hl-simple" onclick="showInfo('was: 단순과거 (is의 과거형)')">was</span> 
+            sunny, so they 
+            <span class="hl-simple" onclick="showInfo('decided: 단순과거 (decide의 과거형)')">decided</span> 
+            to have a picnic. Mina 
+            <span class="hl-simple" onclick="showInfo('brought: 단순과거 (bring의 과거형)')">brought</span> 
+            some sandwiches, and her brother 
+            <span class="hl-simple" onclick="showInfo('made: 단순과거 (make의 과거형)')">made</span> 
+            lemonade. While they 
+            <span class="hl-cont" onclick="showInfo('were eating: 과거진행 (먹고 있던 중이었다)')">were eating</span>, 
+            a small dog 
+            <span class="hl-simple" onclick="showInfo('ran: 단순과거 (run의 과거형)')">ran</span> 
+            toward them. Mina 
+            <span class="hl-simple" onclick="showInfo('was: 단순과거 (is의 과거형)')">was</span> 
+            surprised, but the dog 
+            <span class="hl-simple" onclick="showInfo('was: 단순과거 (is의 과거형)')">was</span> 
+            friendly. They 
+            <span class="hl-simple" onclick="showInfo('played: 단순과거 (play의 과거형)')">played</span> 
+            with the dog for a while and 
+            <span class="hl-simple" onclick="showInfo('returned: 단순과거 (return의 과거형)')">returned</span> 
+            home in the evening. Mina 
+            <span class="hl-simple" onclick="showInfo('had: 단순과거 (have의 과거형)')">had</span> 
+            a wonderful day.
+        </div>
+        <p style="font-size: 0.85rem; color: #64748B; margin-top: 8px;">💡 색상이 칠해진 단어를 누르면 문법 설명을 볼 수 있습니다.</p>
+    </section>
+
+    <!-- 2. Learn the grammar -->
+    <section>
+        <h2>2. Learn the grammar</h2>
+        <p style="font-size: 0.95rem; margin-bottom: 10px; font-weight: 600;">Grammar Point: Simple Past vs. Past Continuous</p>
+        
+        <table class="grammar-table">
+            <thead>
+                <tr>
+                    <th>Grammar</th>
+                    <th>Form</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="tag-simple">단순과거</span></td>
+                    <td>동사의 과거형</td>
+                    <td>Mina <strong>went</strong> to the park.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-cont">과거진행</span></td>
+                    <td>was/were + 동사-ing</td>
+                    <td>They <strong>were eating</strong>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 퀴즈 섹션 -->
+    <section class="practice-box">
+        <h2>✏️ Mini Quiz</h2>
+        <p style="font-size: 0.95rem;">본문 내용 중 <strong>과거진행형(Past Continuous)</strong> 문장은 무엇일까요?</p>
+        <button class="quiz-option" onclick="checkQuiz(false, this)">1. Mina went to the park.</button>
+        <button class="quiz-option" onclick="checkQuiz(true, this)">2. While they were eating, a small dog ran toward them.</button>
+        <button class="quiz-option" onclick="checkQuiz(false, this)">3. Her brother made lemonade.</button>
+        <div id="quizFeedback" class="feedback"></div>
+    </section>
+</div>
+
+<div id="infoToast" class="info-toast"></div>
+
+<script>
+let toastTimer;
+
+function showInfo(text) {
+    const toast = document.getElementById('infoToast');
+    toast.innerText = text;
+    toast.style.display = 'block';
+
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.style.display = 'none';
+    }, 2500);
+}
+
+function checkQuiz(isCorrect, element) {
+    const feedback = document.getElementById('quizFeedback');
+    if (isCorrect) {
+        feedback.style.color = '#059669';
+        feedback.innerText = '정답입니다! 🎉 "were eating"은 was/were + -ing 형태로 과거진행형입니다.';
+    } else {
+        feedback.style.color = '#DC2626';
+        feedback.innerText = '아쉽네요. 다시 생각해보세요! 😅 (힌트: was/were + -ing)';
+    }
+}
+</script>
+
+</body>
+</html>
